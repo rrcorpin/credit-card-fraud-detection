@@ -1,0 +1,15 @@
+{
+  "random_seed": 42,
+  "development_fraction": 0.8,
+  "model_name": "hist_gradient_boosting_flexible",
+  "review_capacity": 0.01,
+  "transform_chunk_size": 100000,
+  "shap_positive_sample": 1500,
+  "shap_negative_sample": 1500,
+  "pdp_sample": 20000,
+  "ice_curves": 100,
+  "confidence_level": 0.95,
+  "minimum_intersection_rows": 5000,
+  "minimum_intersection_fraud_cases": 20,
+  "figure_dpi": 180
+}

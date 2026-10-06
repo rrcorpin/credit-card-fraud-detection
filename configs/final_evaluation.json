@@ -1,0 +1,15 @@
+{
+  "random_seed": 42,
+  "model_name": "hist_gradient_boosting_flexible",
+  "review_capacities": [0.005, 0.01, 0.02],
+  "recommended_review_capacity": 0.01,
+  "transform_chunk_size": 100000,
+  "cost_sensitivity": {
+    "fraud_value_recovery_rates": [0.5, 0.7, 0.9],
+    "review_costs_usd": [2.0, 5.0, 10.0],
+    "false_positive_friction_costs_usd": [5.0, 10.0, 25.0],
+    "base_recovery_rate": 0.7,
+    "base_review_cost_usd": 5.0,
+    "base_false_positive_friction_cost_usd": 10.0
+  }
+}

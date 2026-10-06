@@ -1,0 +1,39 @@
+{
+  "dataset_name": "Sparkov Credit Card Transaction Fraud Dataset",
+  "files": {
+    "train": "data/raw/sparkov/fraudTrain.csv",
+    "test": "data/raw/sparkov/fraudTest.csv"
+  },
+  "target_column": "is_fraud",
+  "timestamp_column": "trans_date_trans_time",
+  "transaction_id_column": "trans_num",
+  "raw_row_index_column": "Unnamed: 0",
+  "categorical_columns": [
+    "cc_num",
+    "merchant",
+    "category",
+    "first",
+    "last",
+    "gender",
+    "street",
+    "city",
+    "state",
+    "zip",
+    "job",
+    "dob"
+  ],
+  "numeric_profile_columns": [
+    "amt",
+    "city_pop",
+    "lat",
+    "long",
+    "unix_time",
+    "merch_lat",
+    "merch_long"
+  ],
+  "iqr_outlier_columns": [
+    "amt",
+    "city_pop"
+  ],
+  "chunk_size": 200000
+}

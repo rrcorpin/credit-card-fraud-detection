@@ -1,0 +1,11 @@
+{
+  "random_seed": 42,
+  "development_fraction": 0.8,
+  "diagnostic_negative_sample": 120000,
+  "mutual_information_sample": 60000,
+  "pca_fit_sample": 100000,
+  "pca_plot_negative_sample": 10000,
+  "feature_selection_k": 25,
+  "extra_trees_estimators": 160,
+  "figure_dpi": 180
+}

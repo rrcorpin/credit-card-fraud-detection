@@ -1,0 +1,101 @@
+{
+  "protocol": {
+    "model": "hist_gradient_boosting_flexible",
+    "hyperparameters_frozen_from_validation": true,
+    "feature_list_frozen_from_development": true,
+    "model_refit_on_complete_fraudTrain": true,
+    "test_evaluated_once": true,
+    "train_rows": 1296675,
+    "train_fraud_cases": 7506,
+    "test_rows": 555719,
+    "test_fraud_cases": 2145,
+    "test_period_start": "2020-06-21T12:14:25",
+    "test_period_end": "2020-12-31T23:59:34",
+    "recommended_review_capacity": 0.01,
+    "recommended_test_score_cutoff": 0.4691840970950894
+  },
+  "ranking_metrics": {
+    "average_precision": 0.8584296954240056,
+    "roc_auc": 0.9960044019273679,
+    "brier_score": 0.004813517395310191,
+    "log_loss": 0.018625364927823674
+  },
+  "recommended_policy_metrics": {
+    "review_capacity": 0.01,
+    "score_cutoff": 0.4691840970950894,
+    "true_negatives": 550001.0,
+    "false_positives": 3573.0,
+    "false_negatives": 160.0,
+    "true_positives": 1985.0,
+    "precision": 0.35714285714285715,
+    "recall": 0.9254079254079254,
+    "f1": 0.515383616772686,
+    "false_positive_rate": 0.006454421631073713,
+    "review_rate": 0.010001457571182558,
+    "fraud_value_capture_rate": 0.9861284411453917,
+    "fraud_value_captured": 1117603.7,
+    "fraud_value_total": 1133324.6800000002
+  },
+  "fairness_at_recommended_policy": {
+    "gender": {
+      "demographic_parity_difference": 0.0010732494348739078,
+      "demographic_parity_ratio_disparate_impact": 0.8976481929305704,
+      "equalized_odds_difference": 0.07171043643662578,
+      "equalized_odds_ratio": 0.79707359138445,
+      "true_positive_rate_gap": 0.07171043643662578,
+      "false_positive_rate_gap": 0.0014418290074224354,
+      "precision_gap": 0.07568549878068925
+    },
+    "age_band_eligible": {
+      "demographic_parity_difference": 0.0037018142969532184,
+      "demographic_parity_ratio_disparate_impact": 0.6993126754775604,
+      "equalized_odds_difference": 0.06749163079866094,
+      "equalized_odds_ratio": 0.6903885803888076,
+      "true_positive_rate_gap": 0.06749163079866094,
+      "false_positive_rate_gap": 0.0023660814589511886,
+      "precision_gap": 0.13202727179522233
+    },
+    "excluded_age_groups": [
+      "under_18"
+    ],
+    "age_exclusion_reason": "Fairlearn equalized-odds metrics are undefined for groups with zero positive labels."
+  },
+  "cost_scenario": {
+    "currency": "USD",
+    "comparison": "illustrative avoided-loss scenario versus no intervention",
+    "base_assumptions": {
+      "fraud_value_recovery_rate": 0.7,
+      "review_cost_usd": 5.0,
+      "false_positive_friction_cost_usd": 10.0
+    },
+    "base_result": {
+      "review_capacity": 0.01,
+      "fraud_value_recovery_rate": 0.7,
+      "review_cost_usd": 5.0,
+      "false_positive_friction_cost_usd": 10.0,
+      "reviewed_transactions": 5558.0,
+      "false_positives": 3573.0,
+      "fraud_value_captured_usd": 1117603.7,
+      "avoided_loss_usd": 782322.59,
+      "operating_cost_usd": 63520.0,
+      "net_benefit_usd": 718802.59,
+      "benefit_cost_ratio": 12.316161681360201,
+      "roi": 11.316161681360201
+    },
+    "sensitivity_at_1pct": {
+      "minimum_net_benefit_usd": 413896.85,
+      "maximum_net_benefit_usd": 976862.33,
+      "minimum_benefit_cost_ratio": 3.8563324246920394,
+      "maximum_benefit_cost_ratio": 34.70699182222835,
+      "all_scenarios_positive": true
+    },
+    "excluded_costs": [
+      "model development and integration",
+      "infrastructure and monitoring",
+      "regulatory and governance review",
+      "fraud recovery uncertainty beyond the scenario rate",
+      "customer lifetime and reputational effects"
+    ],
+    "production_roi_claim": false
+  }
+}

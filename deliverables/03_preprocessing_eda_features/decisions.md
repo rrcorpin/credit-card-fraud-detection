@@ -1,0 +1,15 @@
+# Step 3 Decision Record
+
+| ID | Decision | Rationale and evidence | Consequence or revisit condition |
+|---|---|---|---|
+| S3-D01 | Reserve the final 20% of the original training period for chronological validation. | This yields 1,037,340 development and 259,335 validation transactions without splitting tied timestamps. | Step 3 relationships, selection, importance, and PCA use development data only. |
+| S3-D02 | Delete no rows for missingness, duplicates, or statistical outliers. | Missing and duplicate counts are zero; high amounts and large populations are plausible. | Use `log1p` features and robust/tree comparisons rather than blanket deletion. |
+| S3-D03 | Exclude names, street, export index, transaction ID, and raw card number. | These are identifiers, privacy risks, or memorization/leakage risks. | Card number is used only to create strict-past behavior and then removed. |
+| S3-D04 | Keep gender and age as audit-only attributes in the primary branch. | They are sensitive and show different label base rates. | Step 5 must audit outcome and error-rate disparities; a with/without sensitivity experiment may be run. |
+| S3-D05 | Build historical features using timestamps strictly earlier than each transaction. | Row-order or full-period aggregates could leak future behavior. | Simultaneous transactions receive identical prior history. |
+| S3-D06 | One-hot encode low-cardinality categories and frequency-encode high-cardinality categories. | One-hot preserves nominal meaning; frequency encoding avoids thousands of sparse indicators without using the target. | Unknown categories map safely; target encoding is not used. |
+| S3-D07 | Standardize numeric features for linear and PCA branches. | Scale-sensitive methods require comparable units. | Tree models will consume unscaled numeric features or pipeline-equivalent values where appropriate. |
+| S3-D08 | Use mutual information as the required filter-selection approach and carry a top-25 candidate branch. | It captures nonlinear univariate associations and identifies amount, behavioral deviation, time, and geography as leading signals. | The later controlled ablation found full 98-feature PR-AUC 0.9166 versus 0.8906 for the selected 25; selection is retained as analysis, not assumed to improve prediction. |
+| S3-D09 | Use Extra Trees importance only as diagnostic explainability. | It corroborates amount/time/category signals but impurity importance is biased and the sample is enriched. | Final-model SHAP and PDP analysis is deferred to Steps 4–5. |
+| S3-D10 | Reject PCA as the predictive representation after the Step 3 diagnostic. | Thirteen of 20 components are required for 95% numeric variance, PC1–PC2 overlap substantially, categorical signals would be discarded, and explanations would be less actionable. | Retain PCA evidence as dimensionality-reduction analysis; do not promise an unsupported Step 4 PCA branch. |
+| S3-D11 | Do not run t-SNE or UMAP. | They are optional, computationally costly, and do not replace a reproducible deployment transformation. | Revisit only if a later diagnostic question requires local manifold visualization. |

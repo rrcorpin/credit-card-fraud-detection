@@ -1,0 +1,1861 @@
+{
+  "profile_version": 1,
+  "dataset_name": "Sparkov Credit Card Transaction Fraud Dataset",
+  "configuration": "configs/data_profile.json",
+  "methodology": {
+    "read_strategy": "pandas chunked CSV reads of 200,000 rows",
+    "missingness": "exact null counts from all rows",
+    "duplicate_check": "exact 64-bit pandas hashes of transaction IDs; collision risk is negligible but non-zero",
+    "outlier_rule": "exact per-file Tukey 1.5*IQR flags for amount and city population; flags are not automatically removed",
+    "test_data_policy": "descriptive profiling only; test labels are prohibited from model, feature, hyperparameter, or threshold selection"
+  },
+  "combined": {
+    "rows": 1852394,
+    "fraud_cases": 9651,
+    "legitimate_cases": 1842743,
+    "fraud_rate": 0.005210014716091717,
+    "timestamp_min": "2019-01-01T00:00:18",
+    "timestamp_max": "2020-12-31T23:59:34",
+    "total_missing_values": 0,
+    "cross_split_transaction_id_overlap": 0
+  },
+  "splits": {
+    "train": {
+      "file": "/Users/rcorpin002/Projects/personal/aim/Capstone/data/raw/sparkov/fraudTrain.csv",
+      "file_size_bytes": 351238196,
+      "sha256": "fd7139200dbfcbed0b6742bbe05a4f1abce532c4fef20918228a651647a3e75d",
+      "rows": 1296675,
+      "columns_count": 23,
+      "columns": [
+        "Unnamed: 0",
+        "trans_date_trans_time",
+        "cc_num",
+        "merchant",
+        "category",
+        "amt",
+        "first",
+        "last",
+        "gender",
+        "street",
+        "city",
+        "state",
+        "zip",
+        "lat",
+        "long",
+        "city_pop",
+        "job",
+        "dob",
+        "trans_num",
+        "unix_time",
+        "merch_lat",
+        "merch_long",
+        "is_fraud"
+      ],
+      "raw_dtypes": {
+        "Unnamed: 0": "int64",
+        "trans_date_trans_time": "str",
+        "cc_num": "int64",
+        "merchant": "str",
+        "category": "str",
+        "amt": "float64",
+        "first": "str",
+        "last": "str",
+        "gender": "str",
+        "street": "str",
+        "city": "str",
+        "state": "str",
+        "zip": "int64",
+        "lat": "float64",
+        "long": "float64",
+        "city_pop": "int64",
+        "job": "str",
+        "dob": "str",
+        "trans_num": "str",
+        "unix_time": "int64",
+        "merch_lat": "float64",
+        "merch_long": "float64",
+        "is_fraud": "int64"
+      },
+      "missing_counts": {
+        "Unnamed: 0": 0,
+        "trans_date_trans_time": 0,
+        "cc_num": 0,
+        "merchant": 0,
+        "category": 0,
+        "amt": 0,
+        "first": 0,
+        "last": 0,
+        "gender": 0,
+        "street": 0,
+        "city": 0,
+        "state": 0,
+        "zip": 0,
+        "lat": 0,
+        "long": 0,
+        "city_pop": 0,
+        "job": 0,
+        "dob": 0,
+        "trans_num": 0,
+        "unix_time": 0,
+        "merch_lat": 0,
+        "merch_long": 0,
+        "is_fraud": 0
+      },
+      "total_missing_values": 0,
+      "fraud_cases": 7506,
+      "legitimate_cases": 1289169,
+      "fraud_rate": 0.005788651743883394,
+      "timestamp_min": "2019-01-01T00:00:18",
+      "timestamp_max": "2020-06-21T12:13:37",
+      "invalid_target_values": {},
+      "validation_counts": {
+        "invalid_transaction_timestamp": 0,
+        "invalid_date_of_birth": 0,
+        "date_of_birth_after_transaction": 0,
+        "derived_age_under_18": 15555,
+        "derived_age_over_100": 0,
+        "nonpositive_amount": 0,
+        "nonpositive_city_population": 0,
+        "invalid_cardholder_latitude": 0,
+        "invalid_cardholder_longitude": 0,
+        "invalid_merchant_latitude": 0,
+        "invalid_merchant_longitude": 0
+      },
+      "derived_age_at_transaction_range_years": {
+        "min": 13.922617685003294,
+        "max": 95.64185951799148
+      },
+      "duplicate_transaction_ids": 0,
+      "cross_file_transaction_id_overlap": 0,
+      "raw_index_is_sequential": true,
+      "categorical_summary": {
+        "cc_num": {
+          "cardinality": 983,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "4512828414983801773",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "571365235126",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "36722699017270",
+              "count": 3119,
+              "rate": 0.002405382998823915
+            },
+            {
+              "value": "213112402583773",
+              "count": 3117,
+              "rate": 0.0024038405922841115
+            },
+            {
+              "value": "3545109339866548",
+              "count": 3113,
+              "rate": 0.002400755779204504
+            },
+            {
+              "value": "6534628260579800",
+              "count": 3112,
+              "rate": 0.002399984575934602
+            },
+            {
+              "value": "6011367958204270",
+              "count": 3110,
+              "rate": 0.0023984421693947983
+            },
+            {
+              "value": "2720433095629877",
+              "count": 3107,
+              "rate": 0.0023961285595850926
+            },
+            {
+              "value": "6011438889172900",
+              "count": 3106,
+              "rate": 0.0023953573563151908
+            },
+            {
+              "value": "6011109736646996",
+              "count": 3101,
+              "rate": 0.0023915013399656813
+            }
+          ]
+        },
+        "merchant": {
+          "cardinality": 693,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "fraud_Kilback LLC",
+              "count": 4403,
+              "rate": 0.0033956079973779087
+            },
+            {
+              "value": "fraud_Cormier LLC",
+              "count": 3649,
+              "rate": 0.002814120731871903
+            },
+            {
+              "value": "fraud_Schumm PLC",
+              "count": 3634,
+              "rate": 0.0028025526828233754
+            },
+            {
+              "value": "fraud_Kuhn LLC",
+              "count": 3510,
+              "rate": 0.002706923477355544
+            },
+            {
+              "value": "fraud_Boyer PLC",
+              "count": 3493,
+              "rate": 0.0026938130217672124
+            },
+            {
+              "value": "fraud_Dickinson Ltd",
+              "count": 3434,
+              "rate": 0.002648312028843002
+            },
+            {
+              "value": "fraud_Cummerata-Jones",
+              "count": 2736,
+              "rate": 0.0021100121464515008
+            },
+            {
+              "value": "fraud_Kutch LLC",
+              "count": 2734,
+              "rate": 0.0021084697399116974
+            },
+            {
+              "value": "fraud_Olson, Becker and Koch",
+              "count": 2723,
+              "rate": 0.0020999865039427767
+            },
+            {
+              "value": "fraud_Stroman, Hudson and Erdman",
+              "count": 2721,
+              "rate": 0.002098444097402973
+            }
+          ]
+        },
+        "category": {
+          "cardinality": 14,
+          "allowed_values": [
+            "entertainment",
+            "food_dining",
+            "gas_transport",
+            "grocery_net",
+            "grocery_pos",
+            "health_fitness",
+            "home",
+            "kids_pets",
+            "misc_net",
+            "misc_pos",
+            "personal_care",
+            "shopping_net",
+            "shopping_pos",
+            "travel"
+          ],
+          "top_values": [
+            {
+              "value": "gas_transport",
+              "count": 131659,
+              "rate": 0.10153585131200957
+            },
+            {
+              "value": "grocery_pos",
+              "count": 123638,
+              "rate": 0.0953500298841267
+            },
+            {
+              "value": "home",
+              "count": 123115,
+              "rate": 0.09494669057396804
+            },
+            {
+              "value": "shopping_pos",
+              "count": 116672,
+              "rate": 0.08997782790599032
+            },
+            {
+              "value": "kids_pets",
+              "count": 113035,
+              "rate": 0.08717296161335725
+            },
+            {
+              "value": "shopping_net",
+              "count": 97543,
+              "rate": 0.07522548055603756
+            },
+            {
+              "value": "entertainment",
+              "count": 94014,
+              "rate": 0.07250390421655388
+            },
+            {
+              "value": "food_dining",
+              "count": 91461,
+              "rate": 0.07053502226849442
+            },
+            {
+              "value": "personal_care",
+              "count": 90758,
+              "rate": 0.06999286636975341
+            },
+            {
+              "value": "health_fitness",
+              "count": 85879,
+              "rate": 0.06623016561590221
+            }
+          ]
+        },
+        "first": {
+          "cardinality": 352,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Christopher",
+              "count": 26669,
+              "rate": 0.02056722000501282
+            },
+            {
+              "value": "Robert",
+              "count": 21667,
+              "rate": 0.016709661248963694
+            },
+            {
+              "value": "Jessica",
+              "count": 20581,
+              "rate": 0.01587213449785027
+            },
+            {
+              "value": "James",
+              "count": 20039,
+              "rate": 0.01545414232556346
+            },
+            {
+              "value": "Michael",
+              "count": 20009,
+              "rate": 0.015431006227466404
+            },
+            {
+              "value": "David",
+              "count": 19965,
+              "rate": 0.015397073283590723
+            },
+            {
+              "value": "Jennifer",
+              "count": 16940,
+              "rate": 0.013064183392137583
+            },
+            {
+              "value": "William",
+              "count": 16371,
+              "rate": 0.012625368731563422
+            },
+            {
+              "value": "Mary",
+              "count": 16346,
+              "rate": 0.012606088649815874
+            },
+            {
+              "value": "John",
+              "count": 16325,
+              "rate": 0.012589893381147936
+            }
+          ]
+        },
+        "last": {
+          "cardinality": 481,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Smith",
+              "count": 28794,
+              "rate": 0.022206026953554284
+            },
+            {
+              "value": "Williams",
+              "count": 23605,
+              "rate": 0.018204253186033508
+            },
+            {
+              "value": "Davis",
+              "count": 21910,
+              "rate": 0.01689706364354985
+            },
+            {
+              "value": "Johnson",
+              "count": 20034,
+              "rate": 0.015450286309213952
+            },
+            {
+              "value": "Rodriguez",
+              "count": 17394,
+              "rate": 0.01341430967667303
+            },
+            {
+              "value": "Martinez",
+              "count": 14805,
+              "rate": 0.011417664410897102
+            },
+            {
+              "value": "Jones",
+              "count": 13976,
+              "rate": 0.010778336900148457
+            },
+            {
+              "value": "Lewis",
+              "count": 12753,
+              "rate": 0.009835155301058477
+            },
+            {
+              "value": "Gonzalez",
+              "count": 11799,
+              "rate": 0.009099427381572097
+            },
+            {
+              "value": "Miller",
+              "count": 11698,
+              "rate": 0.00902153585131201
+            }
+          ]
+        },
+        "gender": {
+          "cardinality": 2,
+          "allowed_values": [
+            "F",
+            "M"
+          ],
+          "top_values": [
+            {
+              "value": "F",
+              "count": 709863,
+              "rate": 0.5474486667823472
+            },
+            {
+              "value": "M",
+              "count": 586812,
+              "rate": 0.45255133321765284
+            }
+          ]
+        },
+        "street": {
+          "cardinality": 983,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "864 Reynolds Plains",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "0069 Robin Brooks Apt. 695",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "8172 Robertson Parkways Suite 072",
+              "count": 3119,
+              "rate": 0.002405382998823915
+            },
+            {
+              "value": "4664 Sanchez Common Suite 930",
+              "count": 3117,
+              "rate": 0.0024038405922841115
+            },
+            {
+              "value": "8030 Beck Motorway",
+              "count": 3113,
+              "rate": 0.002400755779204504
+            },
+            {
+              "value": "29606 Martinez Views Suite 653",
+              "count": 3112,
+              "rate": 0.002399984575934602
+            },
+            {
+              "value": "1652 James Mews",
+              "count": 3110,
+              "rate": 0.0023984421693947983
+            },
+            {
+              "value": "854 Walker Dale Suite 488",
+              "count": 3107,
+              "rate": 0.0023961285595850926
+            },
+            {
+              "value": "40624 Rebecca Spurs",
+              "count": 3106,
+              "rate": 0.0023953573563151908
+            },
+            {
+              "value": "594 Berry Lights Apt. 392",
+              "count": 3101,
+              "rate": 0.0023915013399656813
+            }
+          ]
+        },
+        "city": {
+          "cardinality": 894,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Birmingham",
+              "count": 5617,
+              "rate": 0.004331848767038772
+            },
+            {
+              "value": "San Antonio",
+              "count": 5130,
+              "rate": 0.003956272774596564
+            },
+            {
+              "value": "Utica",
+              "count": 5105,
+              "rate": 0.003936992692849018
+            },
+            {
+              "value": "Phoenix",
+              "count": 5075,
+              "rate": 0.0039138565947519615
+            },
+            {
+              "value": "Meridian",
+              "count": 5060,
+              "rate": 0.0039022885457034337
+            },
+            {
+              "value": "Thomas",
+              "count": 4634,
+              "rate": 0.0035737559527252395
+            },
+            {
+              "value": "Conway",
+              "count": 4613,
+              "rate": 0.0035575606840573004
+            },
+            {
+              "value": "Cleveland",
+              "count": 4604,
+              "rate": 0.0035506198546281834
+            },
+            {
+              "value": "Warren",
+              "count": 4599,
+              "rate": 0.0035467638382786744
+            },
+            {
+              "value": "Houston",
+              "count": 4168,
+              "rate": 0.003214375228950971
+            }
+          ]
+        },
+        "state": {
+          "cardinality": 51,
+          "allowed_values": [
+            "AK",
+            "AL",
+            "AR",
+            "AZ",
+            "CA",
+            "CO",
+            "CT",
+            "DC",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "IA",
+            "ID",
+            "IL",
+            "IN",
+            "KS",
+            "KY",
+            "LA",
+            "MA",
+            "MD",
+            "ME",
+            "MI",
+            "MN",
+            "MO",
+            "MS",
+            "MT",
+            "NC",
+            "ND",
+            "NE",
+            "NH",
+            "NJ",
+            "NM",
+            "NV",
+            "NY",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VA",
+            "VT",
+            "WA",
+            "WI",
+            "WV",
+            "WY"
+          ],
+          "top_values": [
+            {
+              "value": "TX",
+              "count": 94876,
+              "rate": 0.07316868143520928
+            },
+            {
+              "value": "NY",
+              "count": 83501,
+              "rate": 0.06439624424007558
+            },
+            {
+              "value": "PA",
+              "count": 79847,
+              "rate": 0.06157826749185417
+            },
+            {
+              "value": "CA",
+              "count": 56360,
+              "rate": 0.04346501629166908
+            },
+            {
+              "value": "OH",
+              "count": 46480,
+              "rate": 0.03584552798503866
+            },
+            {
+              "value": "MI",
+              "count": 46154,
+              "rate": 0.03559411571905065
+            },
+            {
+              "value": "IL",
+              "count": 43252,
+              "rate": 0.033356083829795435
+            },
+            {
+              "value": "FL",
+              "count": 42671,
+              "rate": 0.032908014729982456
+            },
+            {
+              "value": "AL",
+              "count": 40989,
+              "rate": 0.03161085083000752
+            },
+            {
+              "value": "MO",
+              "count": 38403,
+              "rate": 0.0296165191740413
+            }
+          ]
+        },
+        "zip": {
+          "cardinality": 970,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "73754",
+              "count": 3646,
+              "rate": 0.0028118071220621975
+            },
+            {
+              "value": "34112",
+              "count": 3613,
+              "rate": 0.0027863574141554362
+            },
+            {
+              "value": "48088",
+              "count": 3597,
+              "rate": 0.002774018161837006
+            },
+            {
+              "value": "82514",
+              "count": 3527,
+              "rate": 0.0027200339329438755
+            },
+            {
+              "value": "15484",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "49628",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "85173",
+              "count": 3119,
+              "rate": 0.002405382998823915
+            },
+            {
+              "value": "29819",
+              "count": 3117,
+              "rate": 0.0024038405922841115
+            },
+            {
+              "value": "38761",
+              "count": 3113,
+              "rate": 0.002400755779204504
+            },
+            {
+              "value": "5461",
+              "count": 3112,
+              "rate": 0.002399984575934602
+            }
+          ]
+        },
+        "job": {
+          "cardinality": 494,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Film/video editor",
+              "count": 9779,
+              "rate": 0.007541596776370332
+            },
+            {
+              "value": "Exhibition designer",
+              "count": 9199,
+              "rate": 0.007094298879827251
+            },
+            {
+              "value": "Naval architect",
+              "count": 8684,
+              "rate": 0.00669712919582779
+            },
+            {
+              "value": "Surveyor, land/geomatics",
+              "count": 8680,
+              "rate": 0.006694044382748183
+            },
+            {
+              "value": "Materials engineer",
+              "count": 8270,
+              "rate": 0.006377851042088418
+            },
+            {
+              "value": "Designer, ceramics/pottery",
+              "count": 8225,
+              "rate": 0.006343146894942834
+            },
+            {
+              "value": "Systems developer",
+              "count": 7700,
+              "rate": 0.005938265178244356
+            },
+            {
+              "value": "IT trainer",
+              "count": 7679,
+              "rate": 0.005922069909576416
+            },
+            {
+              "value": "Financial adviser",
+              "count": 7659,
+              "rate": 0.005906645844178379
+            },
+            {
+              "value": "Environmental consultant",
+              "count": 7547,
+              "rate": 0.00582027107794937
+            }
+          ]
+        },
+        "dob": {
+          "cardinality": 968,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "1977-03-23",
+              "count": 5636,
+              "rate": 0.004346501629166908
+            },
+            {
+              "value": "1981-08-29",
+              "count": 4636,
+              "rate": 0.0035752983592650433
+            },
+            {
+              "value": "1988-09-15",
+              "count": 4623,
+              "rate": 0.003565272716756319
+            },
+            {
+              "value": "1955-05-06",
+              "count": 3661,
+              "rate": 0.0028233751711107253
+            },
+            {
+              "value": "1983-07-25",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "1995-07-12",
+              "count": 3123,
+              "rate": 0.0024084678119035224
+            },
+            {
+              "value": "1987-10-28",
+              "count": 3119,
+              "rate": 0.002405382998823915
+            },
+            {
+              "value": "1984-06-03",
+              "count": 3117,
+              "rate": 0.0024038405922841115
+            },
+            {
+              "value": "1999-03-05",
+              "count": 3113,
+              "rate": 0.002400755779204504
+            },
+            {
+              "value": "1998-03-19",
+              "count": 3112,
+              "rate": 0.002399984575934602
+            }
+          ]
+        }
+      },
+      "numeric_summary": {
+        "descriptive_statistics": {
+          "amt": {
+            "count": 1296675.0,
+            "mean": 70.35103545607032,
+            "std": 160.3160385715277,
+            "min": 1.0,
+            "1%": 1.26,
+            "25%": 9.65,
+            "median": 47.52,
+            "75%": 83.14,
+            "99%": 545.9926000000002,
+            "max": 28948.9
+          },
+          "city_pop": {
+            "count": 1296675.0,
+            "mean": 88824.44056297839,
+            "std": 301956.360688751,
+            "min": 23.0,
+            "1%": 53.0,
+            "25%": 743.0,
+            "median": 2456.0,
+            "75%": 20328.0,
+            "99%": 1577385.0,
+            "max": 2906700.0
+          },
+          "lat": {
+            "count": 1296675.0,
+            "mean": 38.53762161489964,
+            "std": 5.075808438803933,
+            "min": 20.0271,
+            "1%": 26.4722,
+            "25%": 34.6205,
+            "median": 39.3543,
+            "75%": 41.9404,
+            "99%": 48.4786,
+            "max": 66.6933
+          },
+          "long": {
+            "count": 1296675.0,
+            "mean": -90.22633537864152,
+            "std": 13.759076946486312,
+            "min": -165.6723,
+            "1%": -123.0614,
+            "25%": -96.798,
+            "median": -87.4769,
+            "75%": -80.158,
+            "99%": -70.3457,
+            "max": -67.9503
+          },
+          "unix_time": {
+            "count": 1296675.0,
+            "mean": 1349243636.7261226,
+            "std": 12841278.423359344,
+            "min": 1325376018.0,
+            "1%": 1326022167.74,
+            "25%": 1338750742.5,
+            "median": 1349249747.0,
+            "75%": 1359385375.5,
+            "99%": 1371363386.04,
+            "max": 1371816817.0
+          },
+          "merch_lat": {
+            "count": 1296675.0,
+            "mean": 38.537338044699716,
+            "std": 5.109788369679178,
+            "min": 19.027785,
+            "1%": 26.38940916,
+            "25%": 34.733572,
+            "median": 39.36568,
+            "75%": 41.957164,
+            "99%": 48.577911979999996,
+            "max": 67.510267
+          },
+          "merch_long": {
+            "count": 1296675.0,
+            "mean": -90.22646479897276,
+            "std": 13.77109056479242,
+            "min": -166.671242,
+            "1%": -123.56201644000001,
+            "25%": -96.8972755,
+            "median": -87.43839200000001,
+            "75%": -80.2367965,
+            "99%": -70.38504048,
+            "max": -66.950902
+          }
+        },
+        "iqr_outliers": {
+          "amt": {
+            "method": "values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR",
+            "lower_fence": -100.58499999999998,
+            "upper_fence": 193.375,
+            "count": 67290,
+            "rate": 0.05189426803169645,
+            "interpretation": "distributional flag, not automatic evidence of invalid data"
+          },
+          "city_pop": {
+            "method": "values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR",
+            "lower_fence": -28634.5,
+            "upper_fence": 49705.5,
+            "count": 242674,
+            "rate": 0.18715098232016503,
+            "interpretation": "distributional flag, not automatic evidence of invalid data"
+          }
+        }
+      }
+    },
+    "test": {
+      "file": "/Users/rcorpin002/Projects/personal/aim/Capstone/data/raw/sparkov/fraudTest.csv",
+      "file_size_bytes": 150354339,
+      "sha256": "12d553ab19440c752d2531ee1af44bb64f12cc3d3839f1649f19e81c230545f0",
+      "rows": 555719,
+      "columns_count": 23,
+      "columns": [
+        "Unnamed: 0",
+        "trans_date_trans_time",
+        "cc_num",
+        "merchant",
+        "category",
+        "amt",
+        "first",
+        "last",
+        "gender",
+        "street",
+        "city",
+        "state",
+        "zip",
+        "lat",
+        "long",
+        "city_pop",
+        "job",
+        "dob",
+        "trans_num",
+        "unix_time",
+        "merch_lat",
+        "merch_long",
+        "is_fraud"
+      ],
+      "raw_dtypes": {
+        "Unnamed: 0": "int64",
+        "trans_date_trans_time": "str",
+        "cc_num": "int64",
+        "merchant": "str",
+        "category": "str",
+        "amt": "float64",
+        "first": "str",
+        "last": "str",
+        "gender": "str",
+        "street": "str",
+        "city": "str",
+        "state": "str",
+        "zip": "int64",
+        "lat": "float64",
+        "long": "float64",
+        "city_pop": "int64",
+        "job": "str",
+        "dob": "str",
+        "trans_num": "str",
+        "unix_time": "int64",
+        "merch_lat": "float64",
+        "merch_long": "float64",
+        "is_fraud": "int64"
+      },
+      "missing_counts": {
+        "Unnamed: 0": 0,
+        "trans_date_trans_time": 0,
+        "cc_num": 0,
+        "merchant": 0,
+        "category": 0,
+        "amt": 0,
+        "first": 0,
+        "last": 0,
+        "gender": 0,
+        "street": 0,
+        "city": 0,
+        "state": 0,
+        "zip": 0,
+        "lat": 0,
+        "long": 0,
+        "city_pop": 0,
+        "job": 0,
+        "dob": 0,
+        "trans_num": 0,
+        "unix_time": 0,
+        "merch_lat": 0,
+        "merch_long": 0,
+        "is_fraud": 0
+      },
+      "total_missing_values": 0,
+      "fraud_cases": 2145,
+      "legitimate_cases": 553574,
+      "fraud_rate": 0.0038598644278853163,
+      "timestamp_min": "2020-06-21T12:14:25",
+      "timestamp_max": "2020-12-31T23:59:34",
+      "invalid_target_values": {},
+      "validation_counts": {
+        "invalid_transaction_timestamp": 0,
+        "invalid_date_of_birth": 0,
+        "date_of_birth_after_transaction": 0,
+        "derived_age_under_18": 6292,
+        "derived_age_over_100": 0,
+        "nonpositive_amount": 0,
+        "nonpositive_city_population": 0,
+        "invalid_cardholder_latitude": 0,
+        "invalid_cardholder_longitude": 0,
+        "invalid_merchant_latitude": 0,
+        "invalid_merchant_longitude": 0
+      },
+      "derived_age_at_transaction_range_years": {
+        "min": 15.394300596584868,
+        "max": 96.17233717629004
+      },
+      "duplicate_transaction_ids": 0,
+      "cross_file_transaction_id_overlap": 0,
+      "raw_index_is_sequential": true,
+      "categorical_summary": {
+        "cc_num": {
+          "cardinality": 924,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "6538441737335434",
+              "count": 1474,
+              "rate": 0.002652419658136576
+            },
+            {
+              "value": "4586810168620942",
+              "count": 1466,
+              "rate": 0.0026380238933705704
+            },
+            {
+              "value": "4745996322265",
+              "count": 1462,
+              "rate": 0.0026308260109875674
+            },
+            {
+              "value": "4587657402165341815",
+              "count": 1458,
+              "rate": 0.0026236281286045647
+            },
+            {
+              "value": "2242542703101233",
+              "count": 1428,
+              "rate": 0.0025696440107320427
+            },
+            {
+              "value": "30273037698427",
+              "count": 1426,
+              "rate": 0.002566045069540541
+            },
+            {
+              "value": "372520049757633",
+              "count": 1403,
+              "rate": 0.0025246572458382742
+            },
+            {
+              "value": "30270432095985",
+              "count": 1386,
+              "rate": 0.002494066245710512
+            },
+            {
+              "value": "4364010865167176",
+              "count": 1375,
+              "rate": 0.0024742720691572537
+            },
+            {
+              "value": "344709867813900",
+              "count": 1358,
+              "rate": 0.0024436810690294914
+            }
+          ]
+        },
+        "merchant": {
+          "cardinality": 693,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "fraud_Kilback LLC",
+              "count": 1859,
+              "rate": 0.0033452158375006074
+            },
+            {
+              "value": "fraud_Cormier LLC",
+              "count": 1597,
+              "rate": 0.002873754541413916
+            },
+            {
+              "value": "fraud_Schumm PLC",
+              "count": 1561,
+              "rate": 0.0028089735999668897
+            },
+            {
+              "value": "fraud_Kuhn LLC",
+              "count": 1521,
+              "rate": 0.0027369947761368605
+            },
+            {
+              "value": "fraud_Dickinson Ltd",
+              "count": 1519,
+              "rate": 0.002733395834945359
+            },
+            {
+              "value": "fraud_Boyer PLC",
+              "count": 1506,
+              "rate": 0.0027100027172005997
+            },
+            {
+              "value": "fraud_Emard Inc",
+              "count": 1226,
+              "rate": 0.0022061509503903953
+            },
+            {
+              "value": "fraud_Parisian and Sons",
+              "count": 1202,
+              "rate": 0.0021629636560923774
+            },
+            {
+              "value": "fraud_Corwin-Collins",
+              "count": 1178,
+              "rate": 0.00211977636179436
+            },
+            {
+              "value": "fraud_Streich, Hansen and Veum",
+              "count": 1168,
+              "rate": 0.0021017816558368528
+            }
+          ]
+        },
+        "category": {
+          "cardinality": 14,
+          "allowed_values": [
+            "entertainment",
+            "food_dining",
+            "gas_transport",
+            "grocery_net",
+            "grocery_pos",
+            "health_fitness",
+            "home",
+            "kids_pets",
+            "misc_net",
+            "misc_pos",
+            "personal_care",
+            "shopping_net",
+            "shopping_pos",
+            "travel"
+          ],
+          "top_values": [
+            {
+              "value": "gas_transport",
+              "count": 56370,
+              "rate": 0.10143615748246866
+            },
+            {
+              "value": "grocery_pos",
+              "count": 52553,
+              "rate": 0.09456757821848812
+            },
+            {
+              "value": "home",
+              "count": 52345,
+              "rate": 0.09419328833457197
+            },
+            {
+              "value": "shopping_pos",
+              "count": 49791,
+              "rate": 0.0895974404330246
+            },
+            {
+              "value": "kids_pets",
+              "count": 48692,
+              "rate": 0.08761982224829455
+            },
+            {
+              "value": "shopping_net",
+              "count": 41779,
+              "rate": 0.07518008201986975
+            },
+            {
+              "value": "entertainment",
+              "count": 40104,
+              "rate": 0.07216596877198728
+            },
+            {
+              "value": "personal_care",
+              "count": 39327,
+              "rate": 0.07076778011908896
+            },
+            {
+              "value": "food_dining",
+              "count": 39268,
+              "rate": 0.07066161135393967
+            },
+            {
+              "value": "health_fitness",
+              "count": 36674,
+              "rate": 0.06599378462856227
+            }
+          ]
+        },
+        "first": {
+          "cardinality": 341,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Christopher",
+              "count": 11443,
+              "rate": 0.020591342027175604
+            },
+            {
+              "value": "Robert",
+              "count": 9076,
+              "rate": 0.016331995127033625
+            },
+            {
+              "value": "Jessica",
+              "count": 8655,
+              "rate": 0.015574418006222569
+            },
+            {
+              "value": "David",
+              "count": 8599,
+              "rate": 0.015473647652860528
+            },
+            {
+              "value": "Michael",
+              "count": 8530,
+              "rate": 0.015349484181753728
+            },
+            {
+              "value": "James",
+              "count": 8457,
+              "rate": 0.015218122828263925
+            },
+            {
+              "value": "Jennifer",
+              "count": 7241,
+              "rate": 0.013029966583831036
+            },
+            {
+              "value": "John",
+              "count": 7120,
+              "rate": 0.012812230641745198
+            },
+            {
+              "value": "Mary",
+              "count": 7078,
+              "rate": 0.012736652876723669
+            },
+            {
+              "value": "William",
+              "count": 7025,
+              "rate": 0.01264128093514888
+            }
+          ]
+        },
+        "last": {
+          "cardinality": 471,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Smith",
+              "count": 12146,
+              "rate": 0.021856369855988367
+            },
+            {
+              "value": "Williams",
+              "count": 10056,
+              "rate": 0.018095476310869343
+            },
+            {
+              "value": "Davis",
+              "count": 9524,
+              "rate": 0.017138157953929953
+            },
+            {
+              "value": "Johnson",
+              "count": 8556,
+              "rate": 0.015396270417243247
+            },
+            {
+              "value": "Rodriguez",
+              "count": 7485,
+              "rate": 0.013469037409194215
+            },
+            {
+              "value": "Martinez",
+              "count": 6441,
+              "rate": 0.011590390107230453
+            },
+            {
+              "value": "Jones",
+              "count": 5849,
+              "rate": 0.010525103514546021
+            },
+            {
+              "value": "Lewis",
+              "count": 5540,
+              "rate": 0.009969067100459045
+            },
+            {
+              "value": "Miller",
+              "count": 5123,
+              "rate": 0.00921868786203099
+            },
+            {
+              "value": "Gonzalez",
+              "count": 5010,
+              "rate": 0.009015347684711158
+            }
+          ]
+        },
+        "gender": {
+          "cardinality": 2,
+          "allowed_values": [
+            "F",
+            "M"
+          ],
+          "top_values": [
+            {
+              "value": "F",
+              "count": 304886,
+              "rate": 0.5486333920560571
+            },
+            {
+              "value": "M",
+              "count": 250833,
+              "rate": 0.4513666079439429
+            }
+          ]
+        },
+        "street": {
+          "cardinality": 924,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "444 Robert Mews",
+              "count": 1474,
+              "rate": 0.002652419658136576
+            },
+            {
+              "value": "6983 Carrillo Isle",
+              "count": 1466,
+              "rate": 0.0026380238933705704
+            },
+            {
+              "value": "6114 Adams Harbor Suite 096",
+              "count": 1462,
+              "rate": 0.0026308260109875674
+            },
+            {
+              "value": "6296 John Keys Suite 858",
+              "count": 1458,
+              "rate": 0.0026236281286045647
+            },
+            {
+              "value": "43235 Mckenzie Views Apt. 837",
+              "count": 1428,
+              "rate": 0.0025696440107320427
+            },
+            {
+              "value": "06959 Stephen Branch Suite 246",
+              "count": 1426,
+              "rate": 0.002566045069540541
+            },
+            {
+              "value": "4293 Ramirez Squares",
+              "count": 1403,
+              "rate": 0.0025246572458382742
+            },
+            {
+              "value": "908 Brooks Brook",
+              "count": 1386,
+              "rate": 0.002494066245710512
+            },
+            {
+              "value": "03512 Jackson Ports",
+              "count": 1375,
+              "rate": 0.0024742720691572537
+            },
+            {
+              "value": "2924 Bobby Trafficway",
+              "count": 1358,
+              "rate": 0.0024436810690294914
+            }
+          ]
+        },
+        "city": {
+          "cardinality": 849,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Birmingham",
+              "count": 2423,
+              "rate": 0.004360117253504019
+            },
+            {
+              "value": "Meridian",
+              "count": 2229,
+              "rate": 0.0040110199579283775
+            },
+            {
+              "value": "Phoenix",
+              "count": 2222,
+              "rate": 0.003998423663758122
+            },
+            {
+              "value": "Utica",
+              "count": 2204,
+              "rate": 0.003966033193034609
+            },
+            {
+              "value": "San Antonio",
+              "count": 2182,
+              "rate": 0.0039264448399280935
+            },
+            {
+              "value": "Warren",
+              "count": 1985,
+              "rate": 0.0035719491325651993
+            },
+            {
+              "value": "Cleveland",
+              "count": 1968,
+              "rate": 0.003541358132437437
+            },
+            {
+              "value": "Conway",
+              "count": 1961,
+              "rate": 0.003528761838267182
+            },
+            {
+              "value": "Thomas",
+              "count": 1937,
+              "rate": 0.0034855745439691644
+            },
+            {
+              "value": "Fulton",
+              "count": 1864,
+              "rate": 0.003354213190479361
+            }
+          ]
+        },
+        "state": {
+          "cardinality": 50,
+          "allowed_values": [
+            "AK",
+            "AL",
+            "AR",
+            "AZ",
+            "CA",
+            "CO",
+            "CT",
+            "DC",
+            "FL",
+            "GA",
+            "HI",
+            "IA",
+            "ID",
+            "IL",
+            "IN",
+            "KS",
+            "KY",
+            "LA",
+            "MA",
+            "MD",
+            "ME",
+            "MI",
+            "MN",
+            "MO",
+            "MS",
+            "MT",
+            "NC",
+            "ND",
+            "NE",
+            "NH",
+            "NJ",
+            "NM",
+            "NV",
+            "NY",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VA",
+            "VT",
+            "WA",
+            "WI",
+            "WV",
+            "WY"
+          ],
+          "top_values": [
+            {
+              "value": "TX",
+              "count": 40393,
+              "rate": 0.07268601577415924
+            },
+            {
+              "value": "NY",
+              "count": 35918,
+              "rate": 0.06463338485817473
+            },
+            {
+              "value": "PA",
+              "count": 34326,
+              "rate": 0.06176862766973956
+            },
+            {
+              "value": "CA",
+              "count": 24135,
+              "rate": 0.043430222828443873
+            },
+            {
+              "value": "OH",
+              "count": 20147,
+              "rate": 0.03625393409258996
+            },
+            {
+              "value": "MI",
+              "count": 19671,
+              "rate": 0.03539738608901261
+            },
+            {
+              "value": "IL",
+              "count": 18960,
+              "rate": 0.03411796249543384
+            },
+            {
+              "value": "FL",
+              "count": 18104,
+              "rate": 0.03257761566547122
+            },
+            {
+              "value": "AL",
+              "count": 17532,
+              "rate": 0.0315483184847018
+            },
+            {
+              "value": "MO",
+              "count": 16501,
+              "rate": 0.029693064300482797
+            }
+          ]
+        },
+        "zip": {
+          "cardinality": 912,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "82514",
+              "count": 1589,
+              "rate": 0.0028593587766479103
+            },
+            {
+              "value": "48088",
+              "count": 1518,
+              "rate": 0.0027315963643496084
+            },
+            {
+              "value": "34112",
+              "count": 1495,
+              "rate": 0.0026902085406473415
+            },
+            {
+              "value": "16114",
+              "count": 1474,
+              "rate": 0.002652419658136576
+            },
+            {
+              "value": "73754",
+              "count": 1470,
+              "rate": 0.0026452217757535735
+            },
+            {
+              "value": "29438",
+              "count": 1466,
+              "rate": 0.0026380238933705704
+            },
+            {
+              "value": "46346",
+              "count": 1462,
+              "rate": 0.0026308260109875674
+            },
+            {
+              "value": "60958",
+              "count": 1458,
+              "rate": 0.0026236281286045647
+            },
+            {
+              "value": "40077",
+              "count": 1428,
+              "rate": 0.0025696440107320427
+            },
+            {
+              "value": "72165",
+              "count": 1426,
+              "rate": 0.002566045069540541
+            }
+          ]
+        },
+        "job": {
+          "cardinality": 478,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "Film/video editor",
+              "count": 4119,
+              "rate": 0.0074120193838972575
+            },
+            {
+              "value": "Exhibition designer",
+              "count": 3968,
+              "rate": 0.0071402993239388975
+            },
+            {
+              "value": "Surveyor, land/geomatics",
+              "count": 3756,
+              "rate": 0.0067588115576397425
+            },
+            {
+              "value": "Naval architect",
+              "count": 3750,
+              "rate": 0.006748014734065238
+            },
+            {
+              "value": "Designer, ceramics/pottery",
+              "count": 3463,
+              "rate": 0.006231566673084778
+            },
+            {
+              "value": "Materials engineer",
+              "count": 3441,
+              "rate": 0.0061919783199782625
+            },
+            {
+              "value": "Environmental consultant",
+              "count": 3427,
+              "rate": 0.006166785731637752
+            },
+            {
+              "value": "Financial adviser",
+              "count": 3304,
+              "rate": 0.005945450848360412
+            },
+            {
+              "value": "IT trainer",
+              "count": 3264,
+              "rate": 0.005873472024530383
+            },
+            {
+              "value": "Systems developer",
+              "count": 3262,
+              "rate": 0.005869873083338882
+            }
+          ]
+        },
+        "dob": {
+          "cardinality": 910,
+          "allowed_values": null,
+          "top_values": [
+            {
+              "value": "1977-03-23",
+              "count": 2408,
+              "rate": 0.004333125194567758
+            },
+            {
+              "value": "1988-09-15",
+              "count": 1951,
+              "rate": 0.0035107671323096746
+            },
+            {
+              "value": "1981-08-29",
+              "count": 1935,
+              "rate": 0.003481975602777663
+            },
+            {
+              "value": "1997-09-22",
+              "count": 1474,
+              "rate": 0.002652419658136576
+            },
+            {
+              "value": "1997-07-05",
+              "count": 1466,
+              "rate": 0.0026380238933705704
+            },
+            {
+              "value": "1998-10-07",
+              "count": 1462,
+              "rate": 0.0026308260109875674
+            },
+            {
+              "value": "1955-05-06",
+              "count": 1460,
+              "rate": 0.002627227069796066
+            },
+            {
+              "value": "2004-05-08",
+              "count": 1458,
+              "rate": 0.0026236281286045647
+            },
+            {
+              "value": "1996-04-10",
+              "count": 1428,
+              "rate": 0.0025696440107320427
+            },
+            {
+              "value": "2000-06-13",
+              "count": 1426,
+              "rate": 0.002566045069540541
+            }
+          ]
+        }
+      },
+      "numeric_summary": {
+        "descriptive_statistics": {
+          "amt": {
+            "count": 555719.0,
+            "mean": 69.3928102332294,
+            "std": 156.74594135531504,
+            "min": 1.0,
+            "1%": 1.26,
+            "25%": 9.63,
+            "median": 47.29,
+            "75%": 83.01,
+            "99%": 519.8545999999985,
+            "max": 22768.11
+          },
+          "city_pop": {
+            "count": 555719.0,
+            "mean": 88221.88791817447,
+            "std": 300390.89206099435,
+            "min": 23.0,
+            "1%": 53.0,
+            "25%": 741.0,
+            "median": 2408.0,
+            "75%": 19685.0,
+            "99%": 1577385.0,
+            "max": 2906700.0
+          },
+          "lat": {
+            "count": 555719.0,
+            "mean": 38.54325282129997,
+            "std": 5.061336211107396,
+            "min": 20.0271,
+            "1%": 26.4722,
+            "25%": 34.6689,
+            "median": 39.3716,
+            "75%": 41.8948,
+            "99%": 48.4786,
+            "max": 65.6899
+          },
+          "long": {
+            "count": 555719.0,
+            "mean": -90.23132507832196,
+            "std": 13.721779747818573,
+            "min": -165.6723,
+            "1%": -123.0614,
+            "25%": -96.798,
+            "median": -87.4769,
+            "75%": -80.1752,
+            "99%": -70.3457,
+            "max": -67.9503
+          },
+          "unix_time": {
+            "count": 555719.0,
+            "mean": 1380678865.1667802,
+            "std": 5201104.0659161825,
+            "min": 1371816865.0,
+            "1%": 1371935941.62,
+            "25%": 1376028627.5,
+            "median": 1380761988.0,
+            "75%": 1385866984.0,
+            "99%": 1388390677.24,
+            "max": 1388534374.0
+          },
+          "merch_lat": {
+            "count": 555719.0,
+            "mean": 38.5427977780389,
+            "std": 5.095829265180007,
+            "min": 19.027422,
+            "1%": 26.40630326,
+            "25%": 34.7553015,
+            "median": 39.376593,
+            "75%": 41.954162999999994,
+            "99%": 48.57646747999999,
+            "max": 66.67929699999999
+          },
+          "merch_long": {
+            "count": 555719.0,
+            "mean": -90.23138049244673,
+            "std": 13.73307074810523,
+            "min": -166.671575,
+            "1%": -123.55217012,
+            "25%": -96.90512949999999,
+            "median": -87.445204,
+            "75%": -80.264637,
+            "99%": -70.42688400000002,
+            "max": -66.952026
+          }
+        },
+        "iqr_outliers": {
+          "amt": {
+            "method": "values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR",
+            "lower_fence": -100.44000000000003,
+            "upper_fence": 193.08000000000004,
+            "count": 27778,
+            "rate": 0.04998569420876378,
+            "interpretation": "distributional flag, not automatic evidence of invalid data"
+          },
+          "city_pop": {
+            "method": "values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR",
+            "lower_fence": -27675.0,
+            "upper_fence": 48101.0,
+            "count": 104151,
+            "rate": 0.1874166620180343,
+            "interpretation": "distributional flag, not automatic evidence of invalid data"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+variable,role,type,unit_or_format,allowed_values_or_range,description
+Unnamed: 0,raw row index,integer identifier,sequential integer,0 to rows_in_file - 1,CSV export index; not a predictive feature and will be removed.
+trans_date_trans_time,predictor / ordering,datetime,YYYY-MM-DD HH:MM:SS,observed dataset period,Transaction timestamp used for chronological splitting and temporal features.
+cc_num,entity identifier,integer identifier,card number,synthetic card identifiers,Synthetic cardholder account identifier; excluded as a raw model feature but usable to construct past-only behavior.
+merchant,predictor,categorical string,merchant name,observed merchant categories,Synthetic merchant associated with the transaction.
+category,predictor,categorical string,merchant category,observed category labels,Type of goods or services associated with the merchant.
+amt,predictor / value KPI,continuous numeric,US dollars,non-negative transaction amount,Monetary value of the transaction.
+first,direct identifier,categorical string,given name,synthetic names,Synthetic cardholder first name; excluded from modelling.
+last,direct identifier,categorical string,family name,synthetic names,Synthetic cardholder last name; excluded from modelling.
+gender,protected audit attribute,binary categorical,category,"F, M",Synthetic cardholder gender; retained for fairness auditing only and excluded from model inputs.
+street,direct identifier,categorical string,street address,synthetic addresses,Synthetic cardholder street address; excluded from modelling.
+city,predictor / quasi-identifier,categorical string,city name,observed cities,Cardholder home city; evaluated carefully because geography may proxy demographic characteristics.
+state,predictor / quasi-identifier,categorical string,US postal abbreviation,observed state abbreviations,Cardholder home state.
+zip,predictor / quasi-identifier,categorical integer,US ZIP code,observed synthetic ZIP codes,"Cardholder home ZIP code; treated as categorical, not continuous."
+lat,predictor,continuous numeric,decimal degrees,-90 to 90,Latitude of the cardholder location.
+long,predictor,continuous numeric,decimal degrees,-180 to 180,Longitude of the cardholder location.
+city_pop,predictor,non-negative integer,people,non-negative population,Population of the cardholder city.
+job,predictor / quasi-identifier,categorical string,occupation title,observed occupation labels,Synthetic cardholder occupation; assessed for proxy-bias risk.
+dob,protected-feature source,date,YYYY-MM-DD,date before transaction timestamp,Synthetic date of birth; converted to age at transaction for analysis and fairness auditing.
+trans_num,transaction identifier,categorical string,32-character hexadecimal identifier,synthetic unique transaction IDs,Transaction identifier used for integrity checks; excluded from modelling.
+unix_time,ordering / derived-feature source,integer timestamp,seconds since Unix epoch,observed dataset period,Machine-readable transaction time; redundant with the human-readable timestamp.
+merch_lat,predictor,continuous numeric,decimal degrees,-90 to 90,Latitude of the merchant location.
+merch_long,predictor,continuous numeric,decimal degrees,-180 to 180,Longitude of the merchant location.
+is_fraud,target,binary integer,class label,"0 = legitimate, 1 = fraudulent",Ground-truth transaction fraud label.

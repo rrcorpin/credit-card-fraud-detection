@@ -1,0 +1,26 @@
+feature,display_feature,mean_absolute_shap,mean_signed_shap
+numeric__log_amt,Log amt,3.643145661569554,3.20313416823508
+frequency__merchant_frequency,Merchant frequency,0.9559252391008901,0.7835783439567778
+numeric__hour_cos,Hour cos,0.8216007519863338,0.5519612314630601
+frequency__zip_frequency,Zip frequency,0.5180332461448036,0.4061829445624727
+numeric__hour_sin,Hour sin,0.3577294264371784,0.23483474113721312
+numeric__log_seconds_since_prior_card_txn,Log seconds since prior card txn,0.347103599301288,0.18629367899142038
+one_hot__category_shopping_net,Category shopping net,0.31872747035872645,-0.010769913298617274
+one_hot__amount_band_50_100,Amount band 50 100,0.2916077049495446,0.09224435076881918
+numeric__log_card_prior_mean_amt,Log card prior mean amt,0.250152542384719,0.16991732449379943
+numeric__log_city_pop,Log city pop,0.23649093020110665,0.03407803275748685
+numeric__log_card_prior_txn_count,Log card prior txn count,0.17548104222450217,-0.04972547572945663
+numeric__lat,Lat,0.15023716692843067,-0.014482940627614614
+numeric__log_card_category_prior_txn_count,Log card category prior txn count,0.12281173818831362,-0.07359245247960229
+numeric__log_amount_to_prior_mean_ratio,Log amount to prior mean ratio,0.08929569075314323,0.03479679842727442
+frequency__city_frequency,City frequency,0.07338664865596227,-0.004908534646329097
+frequency__job_frequency,Job frequency,0.06424477367557027,-0.005874705793627244
+numeric__day_of_week_cos,Day of week cos,0.05814639709970649,0.007325164672544151
+numeric__long,Long,0.053000354272742786,-0.012899715302343002
+numeric__is_night,Is night,0.03898728713252937,0.022231755537446014
+numeric__is_weekend,Is weekend,0.03648544489938552,0.006134095852903504
+one_hot__hour_band_evening,Hour band evening,0.024468414476841952,0.009445106406355782
+one_hot__hour_band_morning,Hour band morning,0.014126086551572022,0.006919984930671105
+one_hot__amount_band_under_10,Amount band under 10,0.00824038070350786,0.006201193811183638
+one_hot__hour_band_afternoon,Hour band afternoon,0.004394904770890893,0.0015171348196220482
+one_hot__amount_band_over_500,Amount band over 500,0.0,0.0

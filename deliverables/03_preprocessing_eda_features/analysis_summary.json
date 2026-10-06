@@ -1,0 +1,144 @@
+{
+  "random_seed": 42,
+  "raw_training_rows": 1296675,
+  "development_fraction_requested": 0.8,
+  "split_boundary_timestamp": "2020-03-06T07:16:43",
+  "development": {
+    "rows": 1037340,
+    "start": "2019-01-01T00:00:18",
+    "end": "2020-03-06T07:15:17",
+    "fraud_cases": 5968,
+    "fraud_rate": 0.005753176393467908
+  },
+  "validation": {
+    "rows": 259335,
+    "start": "2020-03-06T07:16:43",
+    "end": "2020-06-21T12:13:37",
+    "fraud_cases": 1538,
+    "fraud_rate": 0.005930553145545337,
+    "policy": "held out from Step 3 relationship EDA, selection, importance, and PCA"
+  },
+  "cleaning": {
+    "missing_values_removed": 0,
+    "duplicate_transaction_ids_removed": 0,
+    "outlier_rows_removed": 0,
+    "outlier_strategy": "retain; log-transform amount and city population; robust tree models evaluated later"
+  },
+  "diagnostic_sample": {
+    "rows": 125968,
+    "fraud_cases": 5968,
+    "purpose": "feature ranking and diagnostic importance only; not unbiased performance estimation"
+  },
+  "feature_selection": {
+    "method": "mutual-information filter on an enriched development-only sample",
+    "top_k": 25,
+    "top_features": [
+      {
+        "rank": 1,
+        "feature": "numeric__log_amt",
+        "mutual_information": 0.11370666546559116
+      },
+      {
+        "rank": 2,
+        "feature": "numeric__log_amount_to_prior_mean_ratio",
+        "mutual_information": 0.07651714932228959
+      },
+      {
+        "rank": 3,
+        "feature": "one_hot__amount_band_over_500",
+        "mutual_information": 0.06016246403332226
+      },
+      {
+        "rank": 4,
+        "feature": "numeric__hour_cos",
+        "mutual_information": 0.03795193451921697
+      },
+      {
+        "rank": 5,
+        "feature": "numeric__long",
+        "mutual_information": 0.037329620265185604
+      },
+      {
+        "rank": 6,
+        "feature": "numeric__lat",
+        "mutual_information": 0.03655996186663968
+      },
+      {
+        "rank": 7,
+        "feature": "numeric__log_city_pop",
+        "mutual_information": 0.03247586031540939
+      },
+      {
+        "rank": 8,
+        "feature": "frequency__zip_frequency",
+        "mutual_information": 0.02676927234946147
+      },
+      {
+        "rank": 9,
+        "feature": "frequency__city_frequency",
+        "mutual_information": 0.024021076305126732
+      },
+      {
+        "rank": 10,
+        "feature": "numeric__hour_sin",
+        "mutual_information": 0.02103046162264266
+      }
+    ]
+  },
+  "model_based_importance": {
+    "model": "ExtraTreesClassifier diagnostic model",
+    "top_features": [
+      {
+        "feature": "numeric__log_amt",
+        "importance": 0.14895193834588036
+      },
+      {
+        "feature": "one_hot__amount_band_over_500",
+        "importance": 0.13107017654631894
+      },
+      {
+        "feature": "numeric__hour_cos",
+        "importance": 0.08668532715527123
+      },
+      {
+        "feature": "one_hot__amount_band_50_100",
+        "importance": 0.0853679361984183
+      },
+      {
+        "feature": "numeric__log_amount_to_prior_mean_ratio",
+        "importance": 0.07880530893300974
+      },
+      {
+        "feature": "numeric__hour_sin",
+        "importance": 0.03821022904561702
+      },
+      {
+        "feature": "one_hot__hour_band_afternoon",
+        "importance": 0.03195168396154308
+      },
+      {
+        "feature": "one_hot__amount_band_under_10",
+        "importance": 0.030806188907865184
+      },
+      {
+        "feature": "one_hot__amount_band_100_500",
+        "importance": 0.02896429311629026
+      },
+      {
+        "feature": "one_hot__category_grocery_pos",
+        "importance": 0.028583071134529108
+      }
+    ],
+    "limitation": "impurity importance is diagnostic and not final-model SHAP"
+  },
+  "pca": {
+    "input_features": 20,
+    "components_for_threshold": {
+      "0.8": 9,
+      "0.9": 12,
+      "0.95": 13
+    },
+    "pc1_explained_variance": 0.14270777448453403,
+    "pc2_explained_variance": 0.10938268918710918
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "protocol": {
+    "model": "hist_gradient_boosting_flexible",
+    "audit_split": "chronological validation",
+    "supplied_test_used": false,
+    "review_capacity": 0.01,
+    "global_score_cutoff": 0.5781999274008751,
+    "validation_rows": 259335,
+    "validation_fraud_cases": 1538,
+    "race_audit_available": false,
+    "socioeconomic_status_audit_available": false,
+    "city_population_is_socioeconomic_status": false
+  },
+  "overfitting_diagnostic": {
+    "development_pr_auc": 0.9669534675973429,
+    "validation_pr_auc": 0.8914095643342445,
+    "absolute_gap": 0.07554390326309846
+  },
+  "global_policy_metrics": {
+    "true_negatives": 256610,
+    "false_positives": 1187,
+    "false_negatives": 131,
+    "true_positives": 1407,
+    "precision": 0.5424055512721665,
+    "recall": 0.9148244473342002,
+    "f1": 0.681026137463698,
+    "false_positive_rate": 0.004604398034112112,
+    "review_rate": 0.010002506410627181,
+    "fraud_value_capture_rate": 0.9723517180245607,
+    "fraud_value_captured": 793697.9099999999,
+    "fraud_value_total": 816266.27
+  },
+  "fairness": {
+    "gender": {
+      "demographic_parity_difference": 0.00011092948236741604,
+      "demographic_parity_ratio_disparate_impact": 0.9889768057258996,
+      "equalized_odds_difference": 0.0864531552641915,
+      "equalized_odds_ratio": 0.7892510276693034,
+      "true_positive_rate_gap": 0.0864531552641915,
+      "false_positive_rate_gap": 0.0010725328324811606,
+      "precision_gap": 0.11187639345048311
+    },
+    "age_band": {
+      "demographic_parity_difference": 0.005340013774904068,
+      "demographic_parity_ratio_disparate_impact": 0.5788490199973265,
+      "equalized_odds_difference": 0.2106741573033708,
+      "equalized_odds_ratio": 0.6659347311475097,
+      "true_positive_rate_gap": 0.2106741573033708,
+      "false_positive_rate_gap": 0.0018923443687103316,
+      "precision_gap": 0.14484451718494273
+    },
+    "city_population_context": {
+      "demographic_parity_difference": 0.0008609046853880007,
+      "demographic_parity_ratio_disparate_impact": 0.9172716214614074,
+      "equalized_odds_difference": 0.016721209287829164,
+      "equalized_odds_ratio": 0.8898613609000348,
+      "true_positive_rate_gap": 0.016721209287829164,
+      "false_positive_rate_gap": 0.0005317378463558925,
+      "precision_gap": 0.0649833083760355
+    }
+  },
+  "mitigation": {
+    "equal_rate_scenario": {
+      "method": "equal review rate within reported gender at unchanged total capacity",
+      "group_score_cutoffs": {
+        "F": 0.5755655704140353,
+        "M": 0.5854223823510306
+      },
+      "metrics": {
+        "true_negatives": 256610,
+        "false_positives": 1187,
+        "false_negatives": 131,
+        "true_positives": 1407,
+        "precision": 0.5424055512721665,
+        "recall": 0.9148244473342002,
+        "f1": 0.681026137463698,
+        "false_positive_rate": 0.004604398034112112,
+        "review_rate": 0.010002506410627181,
+        "fraud_value_capture_rate": 0.9723517180245607,
+        "fraud_value_captured": 793697.9099999999,
+        "fraud_value_total": 816266.27,
+        "demographic_parity_difference": 1.9630046740447965e-06,
+        "demographic_parity_ratio_disparate_impact": 0.9998037698192079,
+        "equalized_odds_difference": 0.0864531552641915,
+        "equalized_odds_ratio": 0.7699499552054332,
+        "true_positive_rate_gap": 0.0864531552641915,
+        "false_positive_rate_gap": 0.0011821570665613602,
+        "precision_gap": 0.11789843373631309
+      }
+    },
+    "equal_opportunity_scenario": {
+      "method": "validation-tuned group thresholds minimizing the gender TPR gap at unchanged total capacity",
+      "group_score_cutoffs": {
+        "F": 0.4229716927293373,
+        "M": 0.9104742887826124
+      },
+      "group_review_quotas": {
+        "F": 1809,
+        "M": 785
+      },
+      "metrics": {
+        "true_negatives": 256596,
+        "false_positives": 1201,
+        "false_negatives": 145,
+        "true_positives": 1393,
+        "precision": 0.5370084811102545,
+        "recall": 0.9057217165149545,
+        "f1": 0.6742497579864473,
+        "false_positive_rate": 0.004658704329375439,
+        "review_rate": 0.010002506410627181,
+        "fraud_value_capture_rate": 0.9660800145521142,
+        "fraud_value_captured": 788578.53,
+        "fraud_value_total": 816266.27,
+        "demographic_parity_difference": 0.006037893187472718,
+        "demographic_parity_ratio_disparate_impact": 0.5257900771716079,
+        "equalized_odds_difference": 0.006731140857172623,
+        "equalized_odds_ratio": 0.1259353755126789,
+        "true_positive_rate_gap": 0.00011851711387123043,
+        "false_positive_rate_gap": 0.006731140857172623,
+        "precision_gap": 0.4574882135676888
+      },
+      "optimism_warning": "Thresholds were optimized and assessed on the same validation data; this is a diagnostic upper bound, not a deployable estimate."
+    },
+    "baseline": {
+      "true_negatives": 256610,
+      "false_positives": 1187,
+      "false_negatives": 131,
+      "true_positives": 1407,
+      "precision": 0.5424055512721665,
+      "recall": 0.9148244473342002,
+      "f1": 0.681026137463698,
+      "false_positive_rate": 0.004604398034112112,
+      "review_rate": 0.010002506410627181,
+      "fraud_value_capture_rate": 0.9723517180245607,
+      "fraud_value_captured": 793697.9099999999,
+      "fraud_value_total": 816266.27,
+      "demographic_parity_difference": 0.00011092948236741604,
+      "demographic_parity_ratio_disparate_impact": 0.9889768057258996,
+      "equalized_odds_difference": 0.0864531552641915,
+      "equalized_odds_ratio": 0.7892510276693034,
+      "true_positive_rate_gap": 0.0864531552641915,
+      "false_positive_rate_gap": 0.0010725328324811606,
+      "precision_gap": 0.11187639345048311
+    },
+    "validation_labels_used_for_assessment_only": true
+  },
+  "explainability": {
+    "method": "TreeSHAP plus partial dependence and ICE",
+    "shap_sample": 3000,
+    "top_features": [
+      {
+        "feature": "numeric__log_amt",
+        "mean_absolute_shap": 3.643145661569554
+      },
+      {
+        "feature": "frequency__merchant_frequency",
+        "mean_absolute_shap": 0.9559252391008901
+      },
+      {
+        "feature": "numeric__hour_cos",
+        "mean_absolute_shap": 0.8216007519863338
+      },
+      {
+        "feature": "frequency__zip_frequency",
+        "mean_absolute_shap": 0.5180332461448036
+      },
+      {
+        "feature": "numeric__hour_sin",
+        "mean_absolute_shap": 0.3577294264371784
+      },
+      {
+        "feature": "numeric__log_seconds_since_prior_card_txn",
+        "mean_absolute_shap": 0.347103599301288
+      },
+      {
+        "feature": "one_hot__category_shopping_net",
+        "mean_absolute_shap": 0.31872747035872645
+      },
+      {
+        "feature": "one_hot__amount_band_50_100",
+        "mean_absolute_shap": 0.2916077049495446
+      },
+      {
+        "feature": "numeric__log_card_prior_mean_amt",
+        "mean_absolute_shap": 0.250152542384719
+      },
+      {
+        "feature": "numeric__log_city_pop",
+        "mean_absolute_shap": 0.23649093020110665
+      }
+    ],
+    "shap_units": "model log-odds",
+    "causal_interpretation": false
+  }
+}

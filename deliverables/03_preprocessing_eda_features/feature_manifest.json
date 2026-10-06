@@ -1,0 +1,78 @@
+{
+  "excluded_direct_identifiers": [
+    "Unnamed: 0",
+    "first",
+    "last",
+    "street",
+    "trans_num",
+    "cc_num"
+  ],
+  "audit_only_columns": [
+    "gender",
+    "age_at_transaction",
+    "age_band"
+  ],
+  "numeric_model_columns": [
+    "log_amt",
+    "log_city_pop",
+    "lat",
+    "long",
+    "merch_lat",
+    "merch_long",
+    "customer_merchant_distance_km",
+    "hour_sin",
+    "hour_cos",
+    "day_of_week_sin",
+    "day_of_week_cos",
+    "is_weekend",
+    "is_night",
+    "is_first_card_transaction",
+    "log_card_prior_txn_count",
+    "log_seconds_since_prior_card_txn",
+    "log_card_prior_mean_amt",
+    "log_amount_to_prior_mean_ratio",
+    "log_merchant_prior_txn_count",
+    "log_card_category_prior_txn_count"
+  ],
+  "one_hot_columns": [
+    "category",
+    "state",
+    "amount_band",
+    "hour_band"
+  ],
+  "frequency_encoded_columns": [
+    "merchant",
+    "city",
+    "zip",
+    "job"
+  ],
+  "encoded_feature_count": 98,
+  "filter_selected_feature_count": 25,
+  "filter_selected_features": [
+    "numeric__log_amt",
+    "numeric__log_amount_to_prior_mean_ratio",
+    "one_hot__amount_band_over_500",
+    "numeric__hour_cos",
+    "numeric__long",
+    "numeric__lat",
+    "numeric__log_city_pop",
+    "frequency__zip_frequency",
+    "frequency__city_frequency",
+    "numeric__hour_sin",
+    "numeric__log_card_prior_mean_amt",
+    "one_hot__amount_band_50_100",
+    "frequency__job_frequency",
+    "numeric__log_seconds_since_prior_card_txn",
+    "frequency__merchant_frequency",
+    "numeric__log_card_prior_txn_count",
+    "one_hot__hour_band_afternoon",
+    "numeric__log_card_category_prior_txn_count",
+    "one_hot__hour_band_evening",
+    "one_hot__amount_band_under_10",
+    "one_hot__hour_band_morning",
+    "numeric__is_night",
+    "numeric__is_weekend",
+    "one_hot__category_shopping_net",
+    "numeric__day_of_week_cos"
+  ]
+}

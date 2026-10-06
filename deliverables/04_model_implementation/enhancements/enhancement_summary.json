@@ -1,0 +1,112 @@
+{
+  "protocol": {
+    "inner_train_rows": 829872,
+    "inner_tuning_rows": 207468,
+    "outer_validation_rows": 259335,
+    "random_search_uses_outer_validation": false,
+    "early_stopping": false,
+    "test_labels_used_for_model_or_calibration_selection": false
+  },
+  "best_parameters": {
+    "hist_gradient_boosting": {
+      "learning_rate": 0.08,
+      "max_iter": 200,
+      "max_leaf_nodes": 63,
+      "min_samples_leaf": 25,
+      "l2_regularization": 0.5
+    },
+    "random_forest": {
+      "n_estimators": 180,
+      "max_depth": 20,
+      "min_samples_leaf": 20,
+      "max_features": 0.5,
+      "max_samples": 0.8
+    }
+  },
+  "representation_winner": {
+    "representation": "full_98_engineered",
+    "feature_count": 98,
+    "average_precision": 0.9165592352864526,
+    "roc_auc": 0.9979097524103563,
+    "brier_score": 0.0023551620323213666,
+    "log_loss": 0.008993696119859292,
+    "at_1pct_true_negatives": 256637,
+    "at_1pct_false_positives": 1160,
+    "at_1pct_false_negatives": 104,
+    "at_1pct_true_positives": 1434,
+    "at_1pct_precision": 0.5528141865844256,
+    "at_1pct_recall": 0.9323797139141743,
+    "at_1pct_f1": 0.6940948693126815,
+    "at_1pct_false_positive_rate": 0.004499664464675694,
+    "at_1pct_review_rate": 0.010002506410627181,
+    "at_1pct_fraud_value_capture_rate": 0.9765650367985927,
+    "at_1pct_fraud_value_captured": 797137.1000000001,
+    "at_1pct_fraud_value_total": 816266.27,
+    "at_1pct_score_cutoff": 0.2823278750538266,
+    "fit_seconds": 24.8868778750184
+  },
+  "calibration": [
+    {
+      "score_type": "raw_class_weighted_score",
+      "average_precision": 0.8775424517840722,
+      "roc_auc": 0.9955444902962001,
+      "brier_score": 0.0022435330825432876,
+      "log_loss": 0.009176519923443472
+    },
+    {
+      "score_type": "isotonic_recalibrated_probability",
+      "average_precision": 0.8668837203249982,
+      "roc_auc": 0.9954614078688631,
+      "brier_score": 0.0016535074097854883,
+      "log_loss": 0.007018800709601822
+    }
+  ],
+  "fairness_test_transfer": [
+    {
+      "policy": "Global top 1% on test scores",
+      "true_negatives": 550001,
+      "false_positives": 3573,
+      "false_negatives": 160,
+      "true_positives": 1985,
+      "precision": 0.35714285714285715,
+      "recall": 0.9254079254079254,
+      "f1": 0.515383616772686,
+      "false_positive_rate": 0.006454421631073713,
+      "review_rate": 0.010001457571182558,
+      "fraud_value_capture_rate": 0.9861284411453917,
+      "fraud_value_captured": 1117603.7,
+      "fraud_value_total": 1133324.6800000002,
+      "demographic_parity_difference": 0.0010732494348739078,
+      "demographic_parity_ratio_disparate_impact": 0.8976481929305704,
+      "equalized_odds_difference": 0.07171043643662578,
+      "equalized_odds_ratio": 0.79707359138445,
+      "true_positive_rate_gap": 0.07171043643662578,
+      "false_positive_rate_gap": 0.0014418290074224354,
+      "precision_gap": 0.07568549878068925
+    },
+    {
+      "policy": "Validation-derived equal-opportunity cutoffs",
+      "true_negatives": 550896,
+      "false_positives": 2678,
+      "false_negatives": 205,
+      "true_positives": 1940,
+      "precision": 0.4200952793417064,
+      "recall": 0.9044289044289044,
+      "f1": 0.5737098920597368,
+      "false_positive_rate": 0.00483765494766734,
+      "review_rate": 0.008309955211176872,
+      "fraud_value_capture_rate": 0.9713922492184675,
+      "fraud_value_captured": 1100902.81,
+      "fraud_value_total": 1133324.6800000002,
+      "demographic_parity_difference": 0.006753686492457777,
+      "demographic_parity_ratio_disparate_impact": 0.40539865436341854,
+      "equalized_odds_difference": 0.010811080635160786,
+      "equalized_odds_ratio": 0.13182500066529448,
+      "true_positive_rate_gap": 0.010811080635160786,
+      "false_positive_rate_gap": 0.006906021948994965,
+      "precision_gap": 0.47082116074319363
+    }
+  ],
+  "global_test_score_cutoff_is_period_relative": 0.4691841,
+  "pca_decision": "Rejected before Step 4: 13/20 components were needed for 95% numeric variance, PC1-PC2 had substantial class overlap, and PCA would discard interpretable mixed-type signals. PCA remains a visualization diagnostic, not a model representation."
+}
